@@ -2,6 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String, Boolean, Float
 #from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
 # PostgreSQL database URL
 DATABASE_URL = "postgresql://raviyadav:newpassword@localhost/customer_success"
@@ -25,5 +26,11 @@ class Item(Base):
     price = Column(Float)
     available = Column(Boolean, default=True)
 
+
+# Prevent DB creation during tests
+if os.getenv("TESTING") != "true":
+    Base.metadata.create_all(bind=engine)
+
+
 # Create tables
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
