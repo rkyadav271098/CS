@@ -22,6 +22,12 @@ def mock_db():
     """Fixture to create a mock database session"""
     return MagicMock(spec=Session)
 
+# Override the 'get_db' dependency with a mock version
+@pytest.fixture(autouse=True)
+def mock_get_db(monkeypatch, mock_db):
+    """Monkeypatch the get_db dependency to return the mocked session"""
+    monkeypatch.setattr("main.get_db", lambda: mock_db)
+
 def test_create_item(mock_db):
     """Test creating a new item"""
     item_data = ItemSchema(name="Test Item", description="A test", price=100.0, available=True)

@@ -6,11 +6,16 @@ from main import get_item, create_item, update_item, delete_item
 from database import Item
 from main import ItemSchema
 
-
 @pytest.fixture
 def mock_db():
     """Fixture to create a mock database session"""
     return MagicMock(spec=Session)
+
+# Override the 'get_db' dependency with a mock version
+@pytest.fixture(autouse=True)
+def mock_get_db(monkeypatch, mock_db):
+    """Monkeypatch the get_db dependency to return the mocked session"""
+    monkeypatch.setattr("main.get_db", lambda: mock_db)
 
 def test_create_item(mock_db):
     """Test creating an item"""
@@ -75,3 +80,11 @@ def test_delete_item(mock_db):
     assert result == {"message": "Item deleted"}
     mock_db.delete.assert_called_once_with(mock_item)
     mock_db.commit.assert_called_once()
+
+# def test_get_deleted_item(mock_db):
+#     """Test retrieving a deleted item (should return 404)"""
+#     mock_db.query.return_value.filter.return_value.first.return_value = None
+
+#     result = get_item(99, mock_db)
+
+#     assert result is None
