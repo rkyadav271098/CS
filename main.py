@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
-from database import Base, engine, SessionLocal, Item
+from database import SessionLocal, Item
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -20,10 +20,13 @@ class ItemSchema(BaseModel):
     price: float
     available: bool = True
 
+    class Config:
+        orm_mode = True  # Enable compatibility with ORM models
+
 # Create an item
 @app.post("/items/")
 def create_item(item: ItemSchema, db: Session = Depends(get_db)):
-    db_item = Item(**item.model_dump())
+    db_item = Item(**item.dict())  # Use .dict() instead of model_dump()
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
