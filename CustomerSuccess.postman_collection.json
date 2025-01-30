@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "512e71f5-bd62-4e89-b3dc-a38de7d6d42e",
+		"name": "CustomerSuccess",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41653803"
+	},
+	"item": [
+		{
+			"name": "Create an Item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Laptop\", \"description\": \"Gaming laptop\", \"price\": 1500.0, \"available\": true}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/items/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'POST' 'http://127.0.0.1:8000/items/1' \\\n     -H 'Content-Type: application/json' \\\n     -d '{\"name\": \"Laptop\", \"description\": \"Gaming laptop\", \"price\": 1500.0, \"available\": true}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/items/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						""
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' 'http://127.0.0.1:8000/items/'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Specific Item",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/items/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'GET' 'http://127.0.0.1:8000/items/1'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Item",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Gaming Laptop\", \"description\": \"High-end laptop\", \"price\": 2000.0, \"available\": false}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/items/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'PUT' 'http://127.0.0.1:8000/items/1' \\\n     -H 'Content-Type: application/json' \\\n     -d '{\"name\": \"Gaming Laptop\", \"description\": \"High-end laptop\", \"price\": 2000.0, \"available\": false}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/items/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"items",
+						"1"
+					]
+				},
+				"description": "Generated from cURL: curl -X 'DELETE' 'http://127.0.0.1:8000/items/1'\n"
+			},
+			"response": []
+		}
+	]
+}
