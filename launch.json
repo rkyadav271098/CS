@@ -1,0 +1,10 @@
+{
+    "name": "Python: Pytest",
+    "type": "python",
+    "request": "launch",
+    "module": "pytest",
+    "args": [
+        "test_main.py"
+    ],
+    "justMyCode": false
+}

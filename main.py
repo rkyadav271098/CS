@@ -23,7 +23,7 @@ class ItemSchema(BaseModel):
 # Create an item
 @app.post("/items/")
 def create_item(item: ItemSchema, db: Session = Depends(get_db)):
-    db_item = Item(**item.dict())
+    db_item = Item(**item.model_dump())
     db.add(db_item)
     db.commit()
     db.refresh(db_item)
