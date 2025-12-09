@@ -8,6 +8,7 @@ def generate_table_of_7():
 def print_table_of_7():
     """Prints the multiplication table for 7."""
     lines = generate_table_of_7()
+    print("--- Table of 7 ---")
     for line in lines:
         print(line)
 
@@ -21,11 +22,10 @@ def generate_table_of_10():
 def print_table_of_10():
     """Prints the multiplication table for 10."""
     lines = generate_table_of_10()
+    print("\n--- Table of 10 ---")
     for line in lines:
         print(line)
 
 if __name__ == "__main__":
-    print("--- Table of 7 ---")
     print_table_of_7()
-    print("\n--- Table of 10 ---")
     print_table_of_10()
